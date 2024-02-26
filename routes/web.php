@@ -29,7 +29,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/AccueilAdmin', [App\Http\Controllers\HomeController::class, 'accueil'])->name('accueil.admin');
 Route::get('/enregistrercommissaire', [App\Http\Controllers\HomeController::class, 'ajoutercommissaire'])->name('ajoutercommissaire');
-
+Route::get('/email.testmail', [MailController::class, 'index'])->name('mails');
 Route::get('/listecommissaire', [AjoutcommController::class, 'user'])->name('listecommissaire');
 Route::get('/controlermoto', [ControleMotoController::class, 'rechercheMoto'])->name('controlermoto');
 Route::get('/Dashbordcommissaire', function(){
@@ -37,9 +37,8 @@ Route::get('/Dashbordcommissaire', function(){
 });
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');
-
 Route::delete('/suprimeradmin/{id}', [AjoutcommController::class, 'destroy'])->name('deletecommissaire');
-Route::get('/recherche', [App\Http\Controllers\ControleMotoController::class, 'rechercheMoto'])->name('recherchemoto');
+//Route::get('/recherche', [App\Http\Controllers\ControleMotoController::class, 'rechercheMoto'])->name('recherchemoto');
 
 
 //Commissaire

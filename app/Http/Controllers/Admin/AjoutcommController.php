@@ -53,7 +53,7 @@ class AjoutcommController extends Controller
             'role' => $request->role,
             'password' =>Hash::make($request['password'])
         ]);
-        //Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
+        Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
      
        $user->save();
       
