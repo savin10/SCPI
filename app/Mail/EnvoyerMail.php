@@ -29,7 +29,7 @@ class EnvoyerMail extends Mailable
     public function build()
     {
         return $this->subject('Envoyer Passwords')
-            ->markdown('mail.envoyer_passwords')
+            ->markdown('mail.envoyer_password')
             ->with([
                 'user' => $this->user,
                 'plainPassword' => $this->plainPassword,
@@ -38,30 +38,30 @@ class EnvoyerMail extends Mailable
     /**
      * Get the message envelope.
      */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Envoyer Mail',
-        );
-    }
+    // public function envelope(): Envelope
+    // {
+    //     return new Envelope(
+    //         subject: 'Envoyer Mail',
+    //     );
+    // }
 
     /**
      * Get the message content definition.
      */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'view.name',
-        );
-    }
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'view.name',
+    //     );
+    // }
 
     /**
      * Get the attachments for the message.
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments(): array
-    {
-        return [];
-    }
+    // public function attachments(): array
+    // {
+    //     return [];
+    // }
 }
