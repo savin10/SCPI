@@ -59,39 +59,14 @@
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <div class="footer-content">
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="#" class="logo d-flex align-items-center">
-              <span>Portail de la police républicaine</span>
-            </a>
-            <p> Nous sommes dédiés à la sécurité de la communauté. Contactez-nous pour toute assistance ou informations supplémentaires.</p>
-          </div>
-          <div class="col-lg-5 col-md-12 footer-info">
-            <a href="index.html" class="logo d-flex align-items-center">
-              <span>Contact</span>
-            </a>
-            <p>Pour tout préocupation contacter  nous </p>
-            <div class="social-links d-flex  mt-3">
-              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
+  
     <div class="footer-legal">
       <div class="container">
         <div class="copyright">
           &copy; 2023 Police républicaine. Tous droits réservés
         </div>
-        <div class="credits">
-          Conçu par <a href="#">Borgia ADJGAGBA</a>
-        </div>
+        
       </div>
     </div>
   </footer><!-- End Footer -->
