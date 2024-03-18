@@ -31,7 +31,11 @@
                         <ul id="forms" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="{{ route('infomoto') }}"><i class="las la-book"></i>Information moto</a></li>
                            <li><a href="#"><i class="las la-book"></i>Localiser une moto</a></li>
+<<<<<<< HEAD
                            <li><a href="{{ route('listeplainte') }}"><i class="las la-book"></i>Plaintes enregistrer</a></li>
+=======
+                           <li><a href="#"><i class="las la-book"></i>Plaintes enregistrer</a></li>
+>>>>>>> dd5b3171326b9af74b37c06d38e0aa17bdbe5c75
                         </ul>
                      </li>
                      
