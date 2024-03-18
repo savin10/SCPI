@@ -15,8 +15,8 @@
                <nav class="iq-sidebar-menu">
                   <ul id="iq-sidebar-toggle" class="iq-menu">
                      <li class="active">
-                        <a href="#" class="iq-waves-effect" data-toggle="collapse" aria-expanded="true"><span class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>Dashboard</span></a>
                         
+                        <li><a href="{{ route('dashbordcommissaire') }}"><i class="las la-home iq-arrow-left"></i>Dashbord</a></li>
                      </li> 
                      <li>
                         <a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>Agent</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
@@ -31,7 +31,7 @@
                         <ul id="forms" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="{{ route('infomoto') }}"><i class="las la-book"></i>Information moto</a></li>
                            <li><a href="#"><i class="las la-book"></i>Localiser une moto</a></li>
-                           <li><a href="#"><i class="las la-book"></i>Enregistrer une perte</a></li>
+                           <li><a href="{{ route('listeplainte') }}"><i class="las la-book"></i>Plaintes enregistrer</a></li>
                         </ul>
                      </li>
                      

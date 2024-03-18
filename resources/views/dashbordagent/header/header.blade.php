@@ -24,7 +24,7 @@
                            <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
                            <div class="caption">
                               <h6 class="mb-0 line-height">{{ Auth::user()->username }}</h6>
-                              <p class="mb-0">{{ Auth::user()->phone }}</p>
+                              <p class="mb-0"></p>
                            </div>
                         </a>
                         <div class="iq-sub-dropdown iq-user-dropdown">

@@ -39,16 +39,16 @@
                                     </div>
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Modèle de la moto</label>
-                                    <input id="validationDefaultUsername" type="text" class="form-control @error('model_moto') is-invalid @enderror" name="model_moto" value="{{ old('model_moto') }}" required autocomplete="model_moto">
+                                    <label for="validationDefault03">Téléphone</label>
+                                    <input id="validationDefaultUsername" type="integer" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" required autocomplete="tel">
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault04">Coleur</label>
-                                    <input  type="text" class="form-control @error('color') is-invalid @enderror" name="color" value="{{ old('color') }}" required autocomplete="color">
+                                    <label for="validationDefault04">Adresse/Lieu</label>
+                                    <input  type="text" class="form-control @error('lieu') is-invalid @enderror" name="lieu" value="{{ old('lieu') }}" required autocomplete="=lieu">
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault05">Num_plaque</label>
-                                    <input id="validationDefaultPlaque" type="text" value="{{ old('num_plaque') }}" class="form-control @error('num_plaque') is-invalid @enderror" name="num_plaque" required autocomplete="num_plaque">
+                                    <label for="validationDefault05">Objet</label>
+                                    <input id="validationDefaultPlaque" type="text" value="{{ old('objet') }}" class="form-control @error('objet') is-invalid @enderror" name="objet" required autocomplete="objet">
                                  </div>
                                  <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Description</label>

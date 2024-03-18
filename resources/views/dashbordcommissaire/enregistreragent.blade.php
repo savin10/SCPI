@@ -49,7 +49,7 @@
                                     <label for="validationDefault05">Role</label>
                                     <input id="role" type="role" value="2" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="new-role">
                                  </div>
-                                 <div class="col-md-6 mb-3">
+                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Mot de passe</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                  </div>

@@ -6,7 +6,9 @@ use App\Http\Controllers\Admin\AjoutcommController;
 use App\Http\Controllers\Agent\AjoutagentController;
 use  App\Http\Controllers\MailController;
 use App\Http\Controllers\ControleMotoController;
-use App\Http\Controllers\Controller;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PlainteController;
 
 
 /*
@@ -26,15 +28,14 @@ Route::get('/', function () {
 
 Auth::routes();
 //Admin
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/AccueilAdmin', [App\Http\Controllers\HomeController::class, 'accueil'])->name('accueil.admin');
-Route::get('/enregistrercommissaire', [App\Http\Controllers\HomeController::class, 'ajoutercommissaire'])->name('ajoutercommissaire');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/AccueilAdmin', [HomeController::class, 'accueil'])->name('accueil.admin');
+Route::get('/enregistrercommissaire', [HomeController::class, 'ajoutercommissaire'])->name('ajoutercommissaire');
 Route::get('/email.testmail', [MailController::class, 'index'])->name('mails');
 Route::get('/listecommissaire', [AjoutcommController::class, 'user'])->name('listecommissaire');
 Route::get('/controlermoto', [ControleMotoController::class, 'rechercheMoto'])->name('controlermoto');
-Route::get('/Dashbordcommissaire', function(){
-    return view('dashbordcommissaire.dashbordcommissaire');
-});
+Route::get('/dashbordcommissaire', [HomeController::class, 'accueil'])->name('dashbordcommissaire');
+
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');
 Route::delete('/suprimeradmin/{id}', [AjoutcommController::class, 'destroy'])->name('deletecommissaire');
@@ -42,15 +43,16 @@ Route::delete('/suprimeradmin/{id}', [AjoutcommController::class, 'destroy'])->n
 
 
 //Commissaire
-Route::get('/enregistreragent', [App\Http\Controllers\HomeController::class, 'enregistagent'])->name('enregistreragent');
+Route::get('/enregistreragent', [HomeController::class, 'enregistagent'])->name('enregistreragent');
 Route::post('/enregistagent', [AjoutagentController::class, 'store'])->name('enregistagent');
 Route::delete('/suprimeragent/{id}', [AjoutagentController::class, 'destroy'])->name('deletagent');
 Route::get('/listagent', [AjoutagentController::class, 'user'])->name('listagent');
 Route::get('/infomoto', [ControleMotoController::class, 'infomoto'])->name('infomoto');
+Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('listeplainte');
 
 
 
 //Agent
-Route::get('/informationmoto', [App\Http\Controllers\ControleMotoController::class, 'informationmoto'])->name('informationmoto');
-Route::get('/plainte', [App\Http\Controllers\PlainteController::class, 'plainte'])->name('plainte');
-Route::post('/plainte', [App\Http\Controllers\PlainteController::class, 'store'])->name('enregistrerplainte');
+Route::get('/informationmoto', [ControleMotoController::class, 'informationmoto'])->name('informationmoto');
+Route::get('/plainte', [PlainteController::class, 'plainte'])->name('plainte');
+Route::post('/plainte', [PlainteController::class, 'store'])->name('enregistrerplainte');

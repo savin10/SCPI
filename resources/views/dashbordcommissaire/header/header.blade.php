@@ -18,13 +18,13 @@
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      
                   </div>
-                  <ul class="navbar-list">
+                  <ul class="navbar-list mb-2" >
                      <li class="line-height">
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                           <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
-                           <div class="caption">
+                        <!--   <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">--->
+                           <div class="caption mb-2">
                               <h6 class="mb-0 line-height">{{ Auth::user()->username }}</h6>
-                              <p class="mb-0">{{ Auth::user()->phone }}</p>
+                              <p class="mb-0"></p>
                            </div>
                         </a>
                         <div class="iq-sub-dropdown iq-user-dropdown">

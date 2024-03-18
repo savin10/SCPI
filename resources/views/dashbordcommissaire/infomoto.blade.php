@@ -19,7 +19,7 @@
                             <div class="iq-card-body">
                                 <form action="{{ route('infomoto') }}" method="GET">
                                     <div class="form-row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 mb-4">
                                             <label for="validationDefaultUsername">N°Plaque d'immatriculation</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">

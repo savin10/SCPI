@@ -39,17 +39,17 @@ class PlainteController extends Controller
     
         $request->validate([
             'nomdeposeur' => ['required', 'string', 'max:255'],
-            'model_moto' => ['required'],
-            'color' => ['required', 'string', 'max:255'],
-            'num_plaque' => ['required', 'string'],
+            'tel' => ['required'],
+            'lieu' => ['required', 'string', 'max:255'],
+            'objet' => ['required', 'string'],
             'description' => ['required', 'string', 'max:255'],
         ]);
       
         $plainte = Plainte::create([
             'nomdeposeur' => strtoupper($request->nomdeposeur),
-            'moto_model' => $request->model_moto,
-            'color' => $request->color,
-            'num_plaque' => $request->num_plaque,
+            'tel' => $request->tel,
+            'lieu' => $request->lieu,
+            'objet' => $request->objet,
             'description' =>$request->description
         ]);
        $plainte->save();
@@ -60,11 +60,7 @@ class PlainteController extends Controller
     
 
     }
-    public function user()
-    {
-        $all_user = User::where ('role', '=', '2')->get();
-        return view('dashbordagent.plainte',compact('all_user'));
-    }
+    
 
 
     /**

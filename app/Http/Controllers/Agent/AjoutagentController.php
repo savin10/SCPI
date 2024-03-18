@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Agent;
 
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnvoyerMail;
+use Illuminate\Support\Facades\Auth;
 
 class AjoutagentController extends Controller
 {
@@ -33,6 +35,7 @@ class AjoutagentController extends Controller
      */
     public function store(Request $request)
     {
+        $registered_user_id = Auth::id();
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required'],
@@ -40,9 +43,8 @@ class AjoutagentController extends Controller
             'role' => ['sometimes', 'integer'],
             'password' => ['required', 'string', 'max:255'],
         ]);
-        if(DB::table('users')->where('email',$request->email)->exists())
-        {
-            return redirect()->back()->withErrors(['email'=>'Cet email a deja été utilisé.']);
+        if (DB::table('users')->where('email', $request->email)->exists()) {
+            return redirect()->back()->withErrors(['email' => 'Cet email a deja été utilisé.']);
         }
         $pass = $request->password;
         $user = User::create([
@@ -50,24 +52,26 @@ class AjoutagentController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'role' => $request->role,
-            'password' =>Hash::make($request['password'])
+            'password' => Hash::make($request['password']),
+            'registered_by' => $registered_user_id,
         ]);
-        Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
-       //event(new save($personne));
-       $user->save();
-       //Auth::login($personne);
+        Mail::to($user->email)->send(new EnvoyerMail($user, $pass));
+        //event(new save($personne));
+        $user->save();
+        //Auth::login($personne);
 
 
-    return redirect()->route('enregistreragent')->with('success','Agent enrégistrer avec success');
-    
-
+        return redirect()->route('enregistreragent')->with('success', 'Agent enrégistrer avec success');
     }
     public function user()
+
     {
-        $all_user = User::where ('role', '=', '2')->get();
-        return view('dashbordcommissaire.listagent',compact('all_user'));
+        $registered_user_id = Auth::id();
+        $all_user = User::where('role', '=', '2')
+            ->where('registered_by', '=', $registered_user_id)->get();
+        return view('dashbordcommissaire.listagent', compact('all_user'));
     }
-    
+
 
     /**
      * Display the specified resource.
@@ -98,7 +102,7 @@ class AjoutagentController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::delete('delete from users where id=?',[$id]);
-        return redirect()->route('enregistagent')->with('success-suppression','Commissaire  supprimé');
+        DB::delete('delete from users where id=?', [$id]);
+        return redirect()->route('enregistagent')->with('success-suppression', 'Commissaire  supprimé');
     }
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Plainte extends Model
 {
     use HasFactory;
-    protected $fillable = ['nomdeposeur','moto_model', 'color','num_plaque', 'description'];
+    protected $fillable = ['nomdeposeur','tel', 'lieu','objet', 'description'];
     
 
 }

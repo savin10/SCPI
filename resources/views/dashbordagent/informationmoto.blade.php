@@ -10,7 +10,7 @@
         <div id="content-page" class="content-page">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 mb-4">
                         <div class="iq-card">
                             <div class="iq-card-header d-flex justify-content-between">
                                 <div class="iq-header-title">
@@ -20,7 +20,7 @@
                             <div class="iq-card-body">
                                 <form action="{{ route('informationmoto') }}" method="GET">
                                     <div class="form-row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 mb-3">
                                             <label for="validationDefaultUsername">N°Plaque d'immatriculation</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
