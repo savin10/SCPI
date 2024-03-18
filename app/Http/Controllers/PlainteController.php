@@ -20,7 +20,7 @@ class PlainteController extends Controller
 
     public function plainte()
     {
-        return view('/dashbordagent.plainte');
+        return view('dashbordagent.plainte');
     }
 
     /**
@@ -39,7 +39,7 @@ class PlainteController extends Controller
     
         $request->validate([
             'nomdeposeur' => ['required', 'string', 'max:255'],
-            'moto_model' => ['required'],
+            'model_moto' => ['required'],
             'color' => ['required', 'string', 'max:255'],
             'num_plaque' => ['required', 'string'],
             'description' => ['required', 'string', 'max:255'],
@@ -47,7 +47,7 @@ class PlainteController extends Controller
       
         $plainte = Plainte::create([
             'nomdeposeur' => strtoupper($request->nomdeposeur),
-            'moto_model' => $request->moto_model,
+            'moto_model' => $request->model_moto,
             'color' => $request->color,
             'num_plaque' => $request->num_plaque,
             'description' =>$request->description

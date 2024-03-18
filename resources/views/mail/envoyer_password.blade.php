@@ -1,5 +1,5 @@
 <x-mail::message>
-# PRegistre Password
+# Police republicaine Password
 
 Votre mot de passe pour vous connecter est: {{ $plainPassword }}
 
