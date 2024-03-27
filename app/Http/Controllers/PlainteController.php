@@ -39,29 +39,29 @@ class PlainteController extends Controller
     
         $request->validate([
             'nomdeposeur' => ['required', 'string', 'max:255'],
-<<<<<<< HEAD
+
             'tel' => ['required'],
             'lieu' => ['required', 'string', 'max:255'],
             'objet' => ['required', 'string'],
-=======
+
             'model_moto' => ['required'],
             'color' => ['required', 'string', 'max:255'],
             'num_plaque' => ['required', 'string'],
->>>>>>> dd5b3171326b9af74b37c06d38e0aa17bdbe5c75
+
             'description' => ['required', 'string', 'max:255'],
         ]);
       
         $plainte = Plainte::create([
             'nomdeposeur' => strtoupper($request->nomdeposeur),
-<<<<<<< HEAD
+
             'tel' => $request->tel,
             'lieu' => $request->lieu,
             'objet' => $request->objet,
-=======
+
             'moto_model' => $request->model_moto,
             'color' => $request->color,
             'num_plaque' => $request->num_plaque,
->>>>>>> dd5b3171326b9af74b37c06d38e0aa17bdbe5c75
+
             'description' =>$request->description
         ]);
        $plainte->save();

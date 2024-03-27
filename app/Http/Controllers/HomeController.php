@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Models\Plainte;
@@ -45,16 +46,20 @@ class HomeController extends Controller
     {
         
         if(auth()->user()->role == "0") {
-
+            
             $usersCount = DB::table('users')->where('role', 1)->count();
             $agentCount = DB::table('users')->where('role', 2)->count();
             $plainteCount = DB::table('plaintes')->count();
             return view('dashbordadmin.accueil',compact('usersCount','agentCount','plainteCount'));
 
         } else if(auth()->user()->role == "1") {
-            $agentCount = DB::table('users')->where('role', 2)->count();
+
+            $registered_user_id = Auth::id();
+            $all_user = User::where('role', '=', '2')
+            ->where('registered_by', '=', $registered_user_id)->count();
+            
             $plainteCount = DB::table('plaintes')->count();
-            return view('dashbordcommissaire.dashbordcommissaire',compact('agentCount','plainteCount'));
+            return view('dashbordcommissaire.dashbordcommissaire',compact('all_user','plainteCount'));
         }else if(auth()->user()->role=="2"){
             return view('dashbordagent.informationmoto');
         }else {
@@ -76,6 +81,11 @@ class HomeController extends Controller
     {
         return view('/dashbordagent.plainte');
     }
+    public function localiser()
+    {
+        return view('/dashbordcommissaire.localiser');
+    }
+
     public function listeplainte()
     {
         $all_plainte = Plainte::all();

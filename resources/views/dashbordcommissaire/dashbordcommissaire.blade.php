@@ -18,7 +18,7 @@
                            </div>
                            <p class="text-secondary">Agents total</p>
                            <div class="d-flex align-items-center justify-content-between">
-                              <h4><b>{{$agentCount}} </b></h4>
+                              <h4><b>{{$all_user}} </b></h4>
                               <div id="iq-chart-box1"></div>
                               <span class="text-primary"><b>  <i class="ri-arrow-up-fill"></i></b></span>
                            </div>

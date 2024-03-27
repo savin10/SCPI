@@ -35,6 +35,7 @@ Route::get('/email.testmail', [MailController::class, 'index'])->name('mails');
 Route::get('/listecommissaire', [AjoutcommController::class, 'user'])->name('listecommissaire');
 Route::get('/controlermoto', [ControleMotoController::class, 'rechercheMoto'])->name('controlermoto');
 Route::get('/dashbordcommissaire', [HomeController::class, 'accueil'])->name('dashbordcommissaire');
+Route::get('/localiser', [HomeController::class, 'localiser'])->name('localiser');
 
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');

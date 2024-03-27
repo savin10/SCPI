@@ -17,24 +17,24 @@
                                 </div>
                             </div>
                             <div class="iq-card-body">
-                                <form action="{{ route('infomoto') }}" method="GET">
+                                <form action="" method="GET">
                                     <div class="form-row">
 
                                         <div class="col-md-12 mb-4">
 
                                         <div class="col-md-12 m-2">
 
-                                            <label for="validationDefaultUsername">N°Plaque d'immatriculation</label>
+                                            <label for="validationDefaultUsername">N°Chasis</label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroupPrepend2">N°:</span>
                                                 </div>
-                                                <input type="search" name="idMoto" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
+                                                <input type="search" name="idchasis" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" required>
                                             </div>
                                         </div><br>
                                     </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-primary" type="submit">Vérifier</button>
+                                    <div class="form-group m-2">
+                                        <button class="btn btn-primary" type="submit">Localiser</button>
                                     </div>
                                 </form>
                             </div>
