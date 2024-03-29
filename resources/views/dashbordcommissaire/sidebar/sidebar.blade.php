@@ -34,7 +34,7 @@
 
                            <li><a href="{{ route('listeplainte') }}"><i class="las la-book"></i>Plaintes enregistrer</a></li>
 
-                           <li><a href="#"><i class="las la-book"></i>Plaintes enregistrer</a></li>
+                           
 
                         </ul>
                      </li>

@@ -22,7 +22,7 @@
 
                                         <div class="col-md-12 mb-4">
 
-                                        <div class="col-md-12 m-2">
+                                        <div class="col-md-12 mb-2">
 
                                             <label for="validationDefaultUsername">N°Chasis</label>
                                             <div class="input-group">
@@ -33,7 +33,7 @@
                                             </div>
                                         </div><br>
                                     </div>
-                                    <div class="form-group m-2">
+                                    <div class="form-group">
                                         <button class="btn btn-primary" type="submit">Localiser</button>
                                     </div>
                                 </form>
