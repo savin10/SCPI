@@ -91,4 +91,9 @@ class HomeController extends Controller
         $all_plainte = Plainte::all();
         return view('dashbordcommissaire.Plaintesenregistrer',compact('all_plainte'));
     }
+    public function listplainte()
+    {
+        $plainte = Plainte::all();
+        return view('dashbordagent.listplainte',compact('plainte'));
+    }
 }

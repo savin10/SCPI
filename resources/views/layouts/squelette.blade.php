@@ -6,6 +6,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <title>Portail de la police républicaine</title>
       <!-- Favicon -->
+      <link href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
       <link rel="shortcut icon" href="images/logo.png" />
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">

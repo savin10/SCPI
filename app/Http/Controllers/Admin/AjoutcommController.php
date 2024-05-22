@@ -34,6 +34,8 @@ class AjoutcommController extends Controller
      */
     public function store(Request $request):RedirectResponse
     {
+
+     
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required'],
@@ -41,10 +43,13 @@ class AjoutcommController extends Controller
             'role' => ['sometimes', 'integer'],
             'password' => ['required', 'string', 'max:255'],
         ]);
+       
         if(DB::table('users')->where('email',$request->email)->exists())
         {
+        
             return redirect()->back()->withErrors(['email'=>'Cet email a deja été utilisé.']);
         }
+      
         $pass = $request->password;
         $user = User::create([
             'username' => strtoupper($request->username),
@@ -53,6 +58,7 @@ class AjoutcommController extends Controller
             'role' => $request->role,
             'password' =>Hash::make($request['password'])
         ]);
+
         Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
      
        $user->save();

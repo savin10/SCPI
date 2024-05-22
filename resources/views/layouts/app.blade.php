@@ -11,6 +11,8 @@
 
     <!-- Fonts -->
          <!-- Favicon -->
+         <link href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
          <link rel="shortcut icon" href="images/logo.png" />
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="css/bootstrap.min.css">

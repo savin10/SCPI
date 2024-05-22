@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Plainte;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -43,11 +44,6 @@ class PlainteController extends Controller
             'tel' => ['required'],
             'lieu' => ['required', 'string', 'max:255'],
             'objet' => ['required', 'string'],
-
-            'model_moto' => ['required'],
-            'color' => ['required', 'string', 'max:255'],
-            'num_plaque' => ['required', 'string'],
-
             'description' => ['required', 'string', 'max:255'],
         ]);
       
@@ -57,11 +53,6 @@ class PlainteController extends Controller
             'tel' => $request->tel,
             'lieu' => $request->lieu,
             'objet' => $request->objet,
-
-            'moto_model' => $request->model_moto,
-            'color' => $request->color,
-            'num_plaque' => $request->num_plaque,
-
             'description' =>$request->description
         ]);
        $plainte->save();
@@ -88,7 +79,17 @@ class PlainteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $plainte = Plainte::findOrFail($id);
+           
+            $users = User::where('role', '=', '2')->get();
+            return view('dashbordagent.edit' , compact( 'plainte' , 'users'));
+    
+
+        $plainte = Plainte::find($id);
+
+
+        return view('dashbordagent.edit' , compact( 'plainte'));
+
     }
 
     /**
@@ -96,7 +97,24 @@ class PlainteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $plainte = Plainte::findOrFail($id);
+
+
+    $plainte = Plainte::findOrFail($id);
+
+
+    // Mettez à jour les propriétés de l'événement en fonction des données du formulaire
+    $plainte->nomdeposeur = $request->input('nomdeposeur');
+    $plainte->tel = $request->input('tel');
+    $plainte->lieu = $request->input('lieu');
+    $plainte->objet = $request->input('objet');
+    $plainte->description = $request->input('description');
+    // Ajoutez d'autres champs si nécessaire...
+
+    $plainte->save();
+
+    // Redirigez l'utilisateur vers une page de confirmation ou une autre page après la mise à jour
+    return redirect()->route('listplainte', ['id' => $plainte->id]);
     }
 
     /**

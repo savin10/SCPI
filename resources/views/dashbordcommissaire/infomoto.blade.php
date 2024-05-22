@@ -22,7 +22,7 @@
 
                                         <div class="col-md-12 mb-4">
 
-                                        <div class="col-md-12 m-2">
+                                        <div class="col-md-12 mb-2">
 
                                             <label for="validationDefaultUsername">N°Plaque d'immatriculation</label>
                                             <div class="input-group">

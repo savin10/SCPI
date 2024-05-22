@@ -34,7 +34,7 @@
                                     <h5 class="mb-0 text-white line-height">{{ Auth::user()->username }}</h5>
                                     <span class="text-white font-size-12">{{ Auth::user()->email }}</span>
                                  </div>
-                                 <!--<a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <a href="{{ route('profile') }}" class="iq-sub-card iq-bg-primary-hover">
                                     <div class="media align-items-center">
                                        <div class="rounded iq-card-icon iq-bg-primary">
                                           <i class="ri-file-user-line"></i>
@@ -44,7 +44,7 @@
                                           <p class="mb-0 font-size-12">Voir details profil.</p>
                                        </div>
                                     </div>
-                                 </a>-->
+                                 </a>
                                  
                                  <div class="d-inline-block w-100 text-center p-3">
                                     <a class="bg-primary iq-sign-btn" href="{{ route('logout') }}"

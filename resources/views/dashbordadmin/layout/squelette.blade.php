@@ -20,6 +20,7 @@
       <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
       <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
       <link href='fullcalendar/list/main.css' rel='stylesheet' />
+      <link href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 
       <link rel="stylesheet" href="css/flatpickr.min.css">
 

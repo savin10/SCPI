@@ -84,17 +84,29 @@ class AjoutagentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        return view('dashbordagent.profile', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+        $user->username = $request->input('username');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->password = $request->input('password');
+        
+    // Ajoutez d'autres champs à mettre à jour selon vos besoins
+
+        $user->save();
+
+    return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
     }
 
     /**

@@ -9,7 +9,7 @@ use App\Http\Controllers\ControleMotoController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PlainteController;
-
+use App\Http\Controllers\LocaliserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +49,7 @@ Route::post('/enregistagent', [AjoutagentController::class, 'store'])->name('enr
 Route::delete('/suprimeragent/{id}', [AjoutagentController::class, 'destroy'])->name('deletagent');
 Route::get('/listagent', [AjoutagentController::class, 'user'])->name('listagent');
 Route::get('/infomoto', [ControleMotoController::class, 'infomoto'])->name('infomoto');
+Route::get('/localisermoto', [LocaliserController::class, 'localiserMoto'])->name('gps');
 Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('listeplainte');
 
 
@@ -57,3 +58,10 @@ Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('list
 Route::get('/informationmoto', [ControleMotoController::class, 'informationmoto'])->name('informationmoto');
 Route::get('/plainte', [PlainteController::class, 'plainte'])->name('plainte');
 Route::post('/plainte', [PlainteController::class, 'store'])->name('enregistrerplainte');
+Route::get('/listplainte', [HomeController::class, 'listplainte'])->name('listplainte');
+Route::get("modification{id}" , [PlainteController::class , "edit"])->name('modificationplainte');
+Route::put("/palinte/{id}/update" , [PlainteController::class , "update"])->name('update');
+Route::post('/plainte/{id}/update', 'PlainteController@update')->name('plainte.update');
+Route::get('/profile',  [AjoutagentController::class, 'edit'])->name('profile');
+Route::put('/profile/update',  [AjoutagentController::class, 'update'])->name('profileupdate');
+

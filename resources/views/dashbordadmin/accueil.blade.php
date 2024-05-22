@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="wrapper">
-   
+  
     @include('dashbordadmin.sidebar.sidebar')
     @include('dashbordadmin.header.header')
 

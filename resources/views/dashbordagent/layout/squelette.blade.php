@@ -9,6 +9,8 @@
       <!-- <link rel="shortcut icon" href="images/logo.png" />-->
       <!-- Bootstrap CSS -->
      <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
       <!-- Typography CSS -->
       <link rel="stylesheet" href="css/typography.css">
       <!-- Style CSS -->
@@ -20,18 +22,16 @@
       <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
       <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
       <link href='fullcalendar/list/main.css' rel='stylesheet' />
-
+      <link href="{{ asset('node_modules/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+      
       <link rel="stylesheet" href="css/flatpickr.min.css">
 
    </head>
    <body>
-   @include('sidebar.sidebar');
-   @include('header.header');
-      yield("content");
-       <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div> 
+  
+   
+      yield("content")
+        
     <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="js/jquery.min.js"></script>

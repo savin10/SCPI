@@ -30,11 +30,9 @@
                                     <tr>
                                       
                                        <th scope="col">Nom des agents</th>
-                                     
                                        <th scope="col">Email</th>
-                                       <th scope="col">Téléphone</th>
+                                       <th scope="col">Phone</th>
                                        <th scope="col">Action</th>
-                                      
                                     </tr>
                                  </thead>
                                  <tbody>
@@ -42,16 +40,16 @@
             <tr>
                 
                 <td>{{ $user->username}}</td>
-                
                 <td>{{ $user->email}}</td>
                 <td>{{ $user->phone}}</td>
+                
                 <td>
 
                             <form action="{{route('deletecommissaire',$user->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-primary" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
-                                 <i class="fa-solid fa-trash"  title="Supprimer"></i>
+                                <i class="fa fa-trash"></i>
                                 </button>
                             </form>
                 </td>

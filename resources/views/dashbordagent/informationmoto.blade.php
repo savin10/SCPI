@@ -21,12 +21,12 @@
                                 <form action="{{ route('informationmoto') }}" method="GET">
                                     <div class="form-row">
 
-                                        <div class="col-md-12 mb-3">
+                                        <div class="col-md-12 mb-4">
 
-                                        <div class="col-md-12 m-2">
+                                        
 
                                             <label for="validationDefaultUsername">N°Plaque d'immatriculation</label>
-                                            <div class="input-group">
+                                            <div class="input-group ">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="inputGroupPrepend2">N°:</span>
                                                 </div>
@@ -34,7 +34,7 @@
                                             </div>
                                         </div><br>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group ">
                                         <button class="btn btn-primary" type="submit">Vérifier</button>
                                     </div>
                                 </form>

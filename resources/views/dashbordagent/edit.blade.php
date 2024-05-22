@@ -1,4 +1,3 @@
-
 @extends('layouts.squelette')
 
 @section('content')
@@ -6,7 +5,9 @@
    
     @include('dashbordagent.sidebar.sidebar')
     @include('dashbordagent.header.header')
+    
     <!-- Contenu spécifique à votre page ici -->
+
     <div id="content-page" class="content-page">
            
                <div class="row">
@@ -20,13 +21,14 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title"> Enregistrer une plainte</h4>
+                              <h4 class="card-title"> Modification du plainte</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
                           
-                           <form method="POST" action="{{ route('enregistrerplainte') }}">
-                                 @csrf
+                        <form method="POST" action="{{ route('update', ['id' => $plainte->id]) }}">
+                           @csrf
+                           @method('PUT')
                               <div class="form-row">
                                  
                                  <div class="col-md-6 mb-3">
@@ -35,24 +37,24 @@
                                        <div class="input-group-prepend">
                                           <span class="input-group-text" id="inputGroupPrepend2">@</span>
                                        </div>
-                                       <input type="text" class="form-control" name='nomdeposeur' id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
+                                       <input type="text" value="{!! $plainte->nomdeposeur !!}" class="form-control" name='nomdeposeur' id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
                                     </div>
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Modèle de la moto</label>
-                                    <input id="validationDefaultUsername" type="text" class="form-control @error('model_moto') is-invalid @enderror" name="model_moto" value="{{ old('model_moto') }}" required autocomplete="model_moto">
+                                    <label for="validationDefault03">Adresse/Lieu</label>
+                                    <input id="validationDefaultUsername" type="text" value="{!! $plainte->lieu !!}" class="form-control  " name="lieu"  required autocomplete="lieu">
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault04">Coleur</label>
-                                    <input  type="text" class="form-control @error('color') is-invalid @enderror" name="color" value="{{ old('color') }}" required autocomplete="color">
+                                    <label for="validationDefault04">Téléphone</label>
+                                    <input  type="text" class="form-control"  value="{!! $plainte->tel !!}" name="tel"  required autocomplete="color">
                                  </div>
                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault05">Num_plaque</label>
-                                    <input id="validationDefaultPlaque" type="text" value="{{ old('num_plaque') }}" class="form-control @error('num_plaque') is-invalid @enderror" name="num_plaque" required autocomplete="num_plaque">
+                                    <label for="validationDefault05">Objet</label>
+                                    <input id="validationDefaultPlaque" type="text" value="{!! $plainte->objet !!}" class="form-control " name="objet" required autocomplete="objet">
                                  </div>
                                  <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Description</label>
-                                    <textarea id="validationDefaultDescription"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description"></textarea>
+                                    <textarea id="validationDefaultDescription"  class="form-control "  name="description" required autocomplete="description">{!! $plainte->description !!}</textarea>
                                  </div>
                               </div>
                              

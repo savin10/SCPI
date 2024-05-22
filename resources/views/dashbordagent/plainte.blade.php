@@ -69,7 +69,7 @@
             </div>
          </div>
   </div>
-  
+  @endsection
   <!-- Contenu spécifique à votre page ici -->
 <!--   
   @include('dashbordadmin.footer.footer') -->

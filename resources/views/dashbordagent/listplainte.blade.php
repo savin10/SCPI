@@ -2,8 +2,8 @@
 
 @section('content')
   <div class="wrapper">
-    @include('dashbordadmin.sidebar.sidebar')
-    @include('dashbordadmin.header.header')
+    @include('dashbordagent.sidebar.sidebar')
+    @include('dashbordagent.header.header')
     <!-- Contenu spécifique à votre page ici -->
     <div id="content-page" class="content-page">
             <div class="container-fluid">
@@ -19,7 +19,7 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Lites des commissaires</h4>
+                              <h4 class="card-title">Plaintes enregistrer</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
@@ -29,32 +29,25 @@
                                  <thead>
                                     <tr>
                                       
-                                       <th scope="col">Nom des commissaires</th>
-                                       
-                                       <th scope="col">Email</th>
-                                       <th scope="col">Téléphone</th>
+                                       <th scope="col">Nom du déposeur</th>
+                                       <th scope="col">Adresse/Lieu</th>
+                                       <th scope="col">Tel</th>
+                                       <th scope="col">Objet</th>
+                                       <th scope="col">Description</th>
                                        <th scope="col">Action</th>
                                       
                                     </tr>
                                  </thead>
                                  <tbody>
-                                 @foreach($all_user as $user)
+                                 @foreach($plainte as $plaintes)
             <tr>
                 
-                <td>{{ $user->username}}</td>
-               
-                <td>{{ $user->email}}</td>
-                <td>{{ $user->phone}}</td>
-                <td>
-
-                            <form action="{{route('deletecommissaire',$user->id)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-primary" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
-                                <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
-                </td>
+                <td>{{ $plaintes->nomdeposeur}}</td>
+                <td>{{ $plaintes->lieu}}</td>
+                <td>{{ $plaintes->tel}}</td>
+                <td>{{ $plaintes->objet}}</td>
+                <td>{{ $plaintes->description}}</td>
+                <td><a href="{{ route('modificationplainte',['id' => $plaintes->id]) }}" class="btn btn-primary mb-1"><i class="fa fa-edit"></i></a></td>
             </tr>
             @endforeach
                                    
