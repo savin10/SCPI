@@ -38,13 +38,9 @@
 
    </head>
    <body>
-   @include('sidebar.sidebar');
-   @include('header.header');
+  
       yield("content");
-      <!-- <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div> -->
+    
     <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       

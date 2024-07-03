@@ -7,23 +7,24 @@
                         <div class="hover-circle"><i class="ri-close-fill"></i></div>
                      </div>
                      <div class="iq-navbar-logo d-flex justify-content-between ml-3">
-                        <a href="index.html" class="header-logo">
-                        <img src="images/logo.png" class="img-fluid rounded" alt="">
-                        <span>Police</span>
+                        <a href="#" class="header-logo">
+                        <img src="/images/logo.png" class="img-fluid rounded" alt="">
+                        <span>Police Républicaine</span>
                         </a>
                      </div>
                   </div>
-                 
+                  
+                  
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                      
                   </div>
                   <ul class="navbar-list">
                      <li class="line-height">
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                        <!-- <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">-->
+                        <!--  <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">-->
                            <div class="caption">
                               <h6 class="mb-0 line-height">{{ Auth::user()->username }}</h6>
-                              
+                              <p class="mb-0"></p>
                            </div>
                         </a>
                         <div class="iq-sub-dropdown iq-user-dropdown">
@@ -33,7 +34,7 @@
                                     <h5 class="mb-0 text-white line-height">{{ Auth::user()->username }}</h5>
                                     <span class="text-white font-size-12">{{ Auth::user()->email }}</span>
                                  </div>
-                                 <!--<a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                 <a href="{{ route('profileadmin') }}" class="iq-sub-card iq-bg-primary-hover">
                                     <div class="media align-items-center">
                                        <div class="rounded iq-card-icon iq-bg-primary">
                                           <i class="ri-file-user-line"></i>
@@ -43,7 +44,7 @@
                                           <p class="mb-0 font-size-12">Voir details profil.</p>
                                        </div>
                                     </div>
-                                 </a>-->
+                                 </a>
                                  
                                  <div class="d-inline-block w-100 text-center p-3">
                                     <a class="bg-primary iq-sign-btn" href="{{ route('logout') }}"

@@ -12,54 +12,74 @@
                         {{session('success-suppression')}}
                     </div>
                 @endif
-               <div class="row">
-                 
-                  
-                  <div class="col-sm-12">
-                     <div class="iq-card">
-                        <div class="iq-card-header d-flex justify-content-between">
-                           <div class="iq-header-title">
-                              <h4 class="card-title">Plaintes enregistrer</h4>
-                           </div>
-                        </div>
-                        <div class="iq-card-body">
+  <div class="col-lg-12 stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Plaintes enregistrer</h4>
+                  <p class="card-description">
+                    
+                  </p>
+                  <div class="table-responsive pt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr class="table-primary">
+                          <th>
+                            #
+                          </th>
+                          <th>
+                           Nom du déposeur
+                          </th>
+                          <th>
+                           Adresse/Lieu
+                          </th>
+                          <th>
+                           Tel
+                          </th>
+                          <th>
+                           Objet
+                          </th>
+                          <th>
+                           Description
+                          </th>
+                          <th>
+                           Action
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($all_plainte as $plainte)
+                        <tr class="table-danger">
+                        <td>
+                           {{ $plainte->id}}
+                          </td>
+                          <td>
+                           {{ $plainte->nomdeposeur}}
+                          </td>
+                          <td>
+                           {{ $plainte->lieu}}
+                          </td>
+                          <td>
+                           {{ $plainte->tel}}
+                          </td>
+                          <td>
+                           {{ $plainte->objet}}
+                          </td>
+                          <td>
+                           {{ $plainte->description}}
+                          </td>
+                          <td>
+                           Traité
+                          </td>
                           
-                           <div class="table-responsive">
-                              <table class="table">
-                                 <thead>
-                                    <tr>
-                                      
-                                       <th scope="col">Nom du déposeur</th>
-                                       <th scope="col">Adresse/Lieu</th>
-                                       <th scope="col">Tel</th>
-                                       <th scope="col">Objet</th>
-                                       <th scope="col">Description</th>
-                                      
-                                    </tr>
-                                 </thead>
-                                 <tbody>
-                                 @foreach($all_plainte as $plainte)
-            <tr>
-                
-                <td>{{ $plainte->nomdeposeur}}</td>
-                <td>{{ $plainte->lieu}}</td>
-                <td>{{ $plainte->tel}}</td>
-                <td>{{ $plainte->objet}}</td>
-                <td>{{ $plainte->description}}</td>
-            </tr>
-            @endforeach
-                                   
-                        </tbody>
-                     </table>
+                        </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
-         </div>
-      </div>
-   </div>
-</div>
+           
          @endsection
-  <!-- Contenu spécifique à votre page ici -->
-<!--   
-  @include('dashbordadmin.footer.footer') -->
 
+         

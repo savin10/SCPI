@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\EnvoyerMail;
+use Illuminate\Support\Facades\Auth;
 
 class AjoutcommController extends Controller
 {
@@ -64,7 +65,7 @@ class AjoutcommController extends Controller
        $user->save();
       
 
-    return redirect()->route('ajoutercommissaire')->with('success','Commissaire enrégistrer avec success');
+    return redirect()->route('profiles')->with('success','Commissaire enrégistrer avec success');
     
 
     }
@@ -87,18 +88,31 @@ class AjoutcommController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit()
     {
-        //
+        $user = Auth::user();
+        return view('dashbordcommissaire.profile', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+        $user->username = $request->input('username');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->password = $request->input('password');
+        
+    // Ajoutez d'autres champs à mettre à jour selon vos besoins
+
+        $user->save();
+
+    return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
     }
+
 
     /**
      * Remove the specified resource from storage.

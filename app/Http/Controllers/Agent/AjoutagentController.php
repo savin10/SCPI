@@ -101,10 +101,11 @@ class AjoutagentController extends Controller
         $user->email = $request->input('email');
         $user->role = $request->input('role');
         $user->password = $request->input('password');
-        
-    // Ajoutez d'autres champs à mettre à jour selon vos besoins
 
         $user->save();
+    // Ajoutez d'autres champs à mettre à jour selon vos besoins
+
+        
 
     return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
     }

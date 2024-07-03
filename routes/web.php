@@ -36,6 +36,8 @@ Route::get('/listecommissaire', [AjoutcommController::class, 'user'])->name('lis
 Route::get('/controlermoto', [ControleMotoController::class, 'rechercheMoto'])->name('controlermoto');
 Route::get('/dashbordcommissaire', [HomeController::class, 'accueil'])->name('dashbordcommissaire');
 Route::get('/localiser', [HomeController::class, 'localiser'])->name('localiser');
+Route::get('/profileadmin',  [HomeController::class, 'edit'])->name('profileadmin');
+Route::put('/profile/updateadmin',  [HomeController::class, 'update'])->name('profileupdateadmin');
 
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');
@@ -51,6 +53,9 @@ Route::get('/listagent', [AjoutagentController::class, 'user'])->name('listagent
 Route::get('/infomoto', [ControleMotoController::class, 'infomoto'])->name('infomoto');
 Route::get('/localisermoto', [LocaliserController::class, 'localiserMoto'])->name('gps');
 Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('listeplainte');
+Route::get('/profiles',  [AjoutcommController::class, 'edit'])->name('profiles');
+Route::put('/profile/updates',  [AjoutcommController::class, 'update'])->name('profileupdates');
+
 
 
 

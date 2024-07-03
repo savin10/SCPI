@@ -28,11 +28,8 @@
    </head>
    <body>
    
-      @yield("content");
-      <!-- <div id="loading">
-         <div id="loading-center">
-         </div>
-      </div> -->
+      @yield("content")
+     
     <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
       <script src="js/jquery.min.js"></script>

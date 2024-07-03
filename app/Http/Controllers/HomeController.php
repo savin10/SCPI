@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Models\Plainte;
+
 class HomeController extends Controller
 {
     /**
@@ -96,4 +97,30 @@ class HomeController extends Controller
         $plainte = Plainte::all();
         return view('dashbordagent.listplainte',compact('plainte'));
     }
+    public function edit()
+    {
+        $user = Auth::user();
+        return view('dashbordadmin.profile', compact('user'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->username = $request->input('username');
+        $user->phone = $request->input('phone');
+        $user->email = $request->input('email');
+        $user->role = $request->input('role');
+        $user->password = $request->input('password');
+
+        $user->save();
+    // Ajoutez d'autres champs à mettre à jour selon vos besoins
+
+        
+
+    return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
+    }
+
 }
