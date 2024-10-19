@@ -52,6 +52,9 @@
                         <p>Energie: {{ $moto->energies }}</p>
                         <p>Nom du propriétaire: {{ $moto->nomproprietaire }}</p>
                     </div>
+                    @else
+                <h1>Aucune moto trouvée pour ce numéro de plaque.</h1>
+
                 @endif
             </div>
         </div>

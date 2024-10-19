@@ -30,11 +30,13 @@
       <link rel="stylesheet" href="css/flatpickr.min.css">
       
         <!-- CSS -->
-        <style>
-            #maCarte{
-                height: 600px;
-            }
-        </style>
+        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
 
    </head>
    <body>

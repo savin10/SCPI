@@ -65,7 +65,7 @@ class AjoutcommController extends Controller
        $user->save();
       
 
-    return redirect()->route('profiles')->with('success','Commissaire enrégistrer avec success');
+    return redirect()->route('ajoutercommissaire')->with('success','Commissaire enrégistrer avec success');
     
 
     }

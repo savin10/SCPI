@@ -53,6 +53,17 @@
                                  <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Description</label>
                                     <textarea id="validationDefaultDescription"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description"></textarea>
+                                    <button id="startRecord">Commencer l'enregistrement</button>
+    <button id="stopRecord" disabled>Arrêter l'enregistrement</button>
+    <p id="status">Statut : En attente</p>
+
+    <audio id="audioPlayback" controls></audio>
+
+    <form action="{{ route('submit.audio') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="audioFile" id="audioFileInput">
+        <button type="submit" class="btn btn-primary ">Soumettre l'audio</button>
+    </form>
                                  </div>
                               </div>
                              
@@ -69,7 +80,54 @@
             </div>
          </div>
   </div>
+  <script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    const startRecordButton = document.getElementById('startRecord');
+    const stopRecordButton = document.getElementById('stopRecord');
+    const audioPlayback = document.getElementById('audioPlayback');
+    const status = document.getElementById('status');
+    const audioFileInput = document.getElementById('audioFileInput');
+
+    startRecordButton.addEventListener('click', async () => {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorder = new MediaRecorder(stream);
+
+        mediaRecorder.start();
+        status.innerText = 'Statut : Enregistrement en cours...';
+        startRecordButton.disabled = true;
+        stopRecordButton.disabled = false;
+
+        mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+        };
+
+        mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+            audioChunks = [];
+            const audioURL = URL.createObjectURL(audioBlob);
+            audioPlayback.src = audioURL;
+            audioPlayback.play();
+
+            const reader = new FileReader();
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = function() {
+                audioFileInput.value = reader.result;  // Encode the audio as base64 and set it as input value
+            };
+
+            status.innerText = 'Statut : Enregistrement terminé';
+            startRecordButton.disabled = false;
+            stopRecordButton.disabled = true;
+        };
+    });
+
+    stopRecordButton.addEventListener('click', () => {
+        mediaRecorder.stop();
+    });
+</script>
   @endsection
+
   <!-- Contenu spécifique à votre page ici -->
 <!--   
   @include('dashbordadmin.footer.footer') -->

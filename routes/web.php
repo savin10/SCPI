@@ -69,4 +69,6 @@ Route::put("/palinte/{id}/update" , [PlainteController::class , "update"])->name
 Route::post('/plainte/{id}/update', 'PlainteController@update')->name('plainte.update');
 Route::get('/profile',  [AjoutagentController::class, 'edit'])->name('profile');
 Route::put('/profile/update',  [AjoutagentController::class, 'update'])->name('profileupdate');
+Route::post('/submit-audio', 'ComplaintController@storeAudio')->name('submit.audio');
+
 
