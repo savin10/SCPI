@@ -52,6 +52,7 @@ Route::delete('/suprimeragent/{id}', [AjoutagentController::class, 'destroy'])->
 Route::get('/listagent', [AjoutagentController::class, 'user'])->name('listagent');
 Route::get('/infomoto', [ControleMotoController::class, 'infomoto'])->name('infomoto');
 Route::get('/localisermoto', [LocaliserController::class, 'localiserMoto'])->name('gps');
+Route::get('/plaintes', [PlainteController::class, 'plaintes'])->name('plaintes');
 Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('listeplainte');
 Route::get('/profiles',  [AjoutcommController::class, 'edit'])->name('profiles');
 Route::put('/profile/updates',  [AjoutcommController::class, 'update'])->name('profileupdates');
