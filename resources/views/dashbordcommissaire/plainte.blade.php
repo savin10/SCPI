@@ -53,7 +53,7 @@
                                  <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Description</label>
                                     <textarea id="validationDefaultDescription"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description"></textarea>
-                                    <button id="startRecord">Commencer l'enregistrement</button>
+                                    <!--   <button id="startRecord">Commencer l'enregistrement</button>
     <button id="stopRecord" disabled>Arrêter l'enregistrement</button>
     <p id="status">Statut : En attente</p>
 
@@ -64,6 +64,7 @@
         <input type="hidden" name="audioFile" id="audioFileInput">
         <button type="submit" class="btn btn-primary ">Soumettre l'audio</button>
     </form>
+    -->
                                  </div>
                               </div>
                              
