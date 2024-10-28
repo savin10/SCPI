@@ -8,8 +8,8 @@
 /* Colors */
 :root {
   --color-default: #fff;
-  --color-primary: #f10606;
-  --color-secondary: #145b17;
+  --color-primary: #f10606b2;
+  --color-secondary: #303f75;
 }
 
 /* Smooth scroll behavior */
@@ -233,7 +233,7 @@ section {
 }
 
 .header.sticked {
-  background: #145b17;
+  background: #303f75;
   padding: 12px 0;
 }
 
@@ -504,7 +504,7 @@ section {
 .hero:before {
   position: absolute;
   content: "";
-  background: rgba(159, 249, 91, 0.6);
+  background: #303f7595;
   inset: 0;
 }
 
