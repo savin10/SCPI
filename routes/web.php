@@ -38,6 +38,7 @@ Route::get('/dashbordcommissaire', [HomeController::class, 'accueil'])->name('da
 Route::get('/localiser', [HomeController::class, 'localiser'])->name('localiser');
 Route::get('/profileadmin',  [HomeController::class, 'edit'])->name('profileadmin');
 Route::put('/profile/updateadmin',  [HomeController::class, 'update'])->name('profileupdateadmin');
+Route::get('/listagents', [AjoutcommController::class, 'agent'])->name('listagents');
 
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');

@@ -74,6 +74,11 @@ class AjoutcommController extends Controller
         $all_user = User::where ('role', '=', '1')->get();
         return view('dashbordadmin.listecommissaire',compact('all_user'));
     }
+    public function agent()
+    {
+        $all_user = User::where ('role', '=', '2')->get();
+        return view('dashbordadmin.listecommissaire',compact('all_user'));
+    }
 
     
 
