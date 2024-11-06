@@ -23,9 +23,7 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr class="table-primary">
-                          <th>
-                            #
-                          </th>
+                         
                           <th>
                            Nom des agents
                           </th>
@@ -36,6 +34,9 @@
                             Phone
                           </th>
                           <th>
+                            Date d'intégration
+                          </th>
+                          <th>
                             Action
                           </th>
                         </tr>
@@ -43,9 +44,7 @@
                       <tbody>
                         @foreach($all_user as $user)
                         <tr class="table-warning">
-                          <td>
-                           {{ $user->id}}
-                          </td>
+                        
                           <td>
                            {{ $user->username}}
                           </td>
@@ -54,6 +53,9 @@
                           </td>
                           <td>
                            {{ $user->phone}}
+                          </td>
+                          <td>
+                           {{ $user->created_at}}
                           </td>
                           <td>
                             <form action="{{route('deletecommissaire',$user->id)}}" method="POST">

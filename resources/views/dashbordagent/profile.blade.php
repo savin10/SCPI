@@ -4,8 +4,8 @@
 @section('content')
   <div class="wrapper">
    
-    @include('dashbordagent.sidebar.sidebar')
-    @include('dashbordagent.header.header')
+  @include('dashbordagent.sidebar.sidebar')
+  @include('dashbordagent.header.header')
     <!-- Contenu spécifique à votre page ici -->
     <div id="content-page" class="content-page">
             <div class="container-fluid">
@@ -27,13 +27,13 @@
                                     </div>
                                  </div>
                                  <div class="iq-card-body">
-                                 <form method="POST" action="{{ route('profileupdate') }}">
+                                 <form method="POST" action="{{ route('profileupdates') }}">
                                     @csrf
                                     @method('PUT')
                                        <div class="form-group row align-items-center">
                                           <div class="col-md-12">
                                              <div class="profile-img-edit">
-                                                <img class="profile-pic" src="images/user/11.png" alt="profile-pic">
+                                                <!-- <img class="profile-pic" src="images/user/11.png" alt="profile-pic">-->
                                                 <div class="p-image">
                                                    <i class="ri-pencil-line upload-button"></i>
                                                    <input class="file-upload" type="file" accept="image/*"/>

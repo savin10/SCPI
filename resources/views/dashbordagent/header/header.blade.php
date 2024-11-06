@@ -21,7 +21,7 @@
                   <ul class="navbar-list">
                      <li class="line-height">
                         <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                           <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
+                           <!--  <img src="images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">-->
                            <div class="caption">
                               <h6 class="mb-0 line-height">{{ Auth::user()->username }}</h6>
                               <p class="mb-0"></p>

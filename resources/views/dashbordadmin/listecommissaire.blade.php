@@ -25,10 +25,10 @@
                         <div class="iq-card-body">
                           
                            <div class="table-responsive">
-                              <table class="table">
+                           <table id="user-list-table" class="table table-striped table-bordered mt-4" role="grid" aria-describedby="user-list-page-info">
                                  <thead>
                                     <tr>
-                                      
+                                    
                                        <th scope="col">Nom des commissaires</th>
                                        
                                        <th scope="col">Email</th>
@@ -41,20 +41,22 @@
                                  @foreach($all_user as $user)
             <tr>
                 
+              
                 <td>{{ $user->username}}</td>
                
                 <td>{{ $user->email}}</td>
                 <td>{{ $user->phone}}</td>
                 <td>
-
-                            <form action="{{route('deletecommissaire',$user->id)}}" method="POST">
+                                       <div class="flex align-items-center list-user-action">
+                                       <form action="{{route('deletecommissaire',$user->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-primary" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')">
                                 <i class="fa fa-trash"></i>
                                 </button>
                             </form>
-                </td>
+                                       </div>
+                                    </td>
             </tr>
             @endforeach
                                    
