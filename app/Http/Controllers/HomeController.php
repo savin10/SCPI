@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +70,9 @@ class HomeController extends Controller
     
     public function ajoutercommissaire()
     {
-        return view('/dashbordadmin.ajoutercommissaire');
+        $generatedPassword = Str::random(8);
+
+        return view('/dashbordadmin.ajoutercommissaire',compact('generatedPassword'));
     }
     public function enregistagent()
     {

@@ -33,42 +33,40 @@ class AjoutcommController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request):RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-
-     
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255',],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'role' => ['sometimes', 'integer'],
             'password' => ['required', 'string', 'max:255'],
         ]);
-       
-        if(DB::table('users')->where('email',$request->email)->exists())
-        {
-        
-            return redirect()->back()->withErrors(['email'=>'Cet email a deja été utilisé.']);
-        }
-      
-        $pass = $request->password;
-        $user = User::create([
-            'username' => strtoupper($request->username),
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' =>Hash::make($request['password'])
-        ]);
-
-        Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
-     
-       $user->save();
-      
-
-    return redirect()->route('profiles')->with('success','Commissaire enrégistrer avec success');
     
-
+        // Vérifier si l'email existe déjà
+        if (DB::table('users')->where('email', $request->email)->exists()) {
+            return redirect()->back()->withErrors(['email' => 'Cet email a déjà été utilisé.'])->with('error', 'Erreur lors de l\'enregistrement.');
+        }
+    
+        try {
+            // Créer l'utilisateur
+            $user = User::create([
+                'username' => strtoupper($request->username),
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'role' => $request->role ?? 0, // Valeur par défaut si `role` est absent
+                'password' => Hash::make($request->password),
+            ]);
+    
+            Mail::to($user->email)->send(new EnvoyerMail($user, $request->password));
+    
+            return redirect()->route('profiles')->with('success', 'Utilisateur enregistré avec succès.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
+        }
     }
+    
+    
     public function user()
     {
         $all_user = User::where ('role', '=', '1')->get();
