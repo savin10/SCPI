@@ -31,7 +31,7 @@
                         <ul id="forms" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="{{ route('infomoto') }}"><i class="las la-book"></i>Information moto</a></li>
                            <li><a href="{{ route('localiser') }}"><i class="las la-book"></i>Localiser une moto</a></li>
-
+                           <li><a href="{{ route('plaintes') }}"><i class="las la-book"></i>Enregistrer une perte</a></li>
                            <li><a href="{{ route('listeplainte') }}"><i class="las la-book"></i>Plaintes enregistrer</a></li>
 
                            

@@ -38,6 +38,7 @@ Route::get('/dashbordcommissaire', [HomeController::class, 'accueil'])->name('da
 Route::get('/localiser', [HomeController::class, 'localiser'])->name('localiser');
 Route::get('/profileadmin',  [HomeController::class, 'edit'])->name('profileadmin');
 Route::put('/profile/updateadmin',  [HomeController::class, 'update'])->name('profileupdateadmin');
+Route::get('/listagents', [AjoutcommController::class, 'agent'])->name('listagents');
 
 
 Route::post('/enregistrercom', [AjoutcommController::class, 'store'])->name('enregistrercom');
@@ -52,6 +53,7 @@ Route::delete('/suprimeragent/{id}', [AjoutagentController::class, 'destroy'])->
 Route::get('/listagent', [AjoutagentController::class, 'user'])->name('listagent');
 Route::get('/infomoto', [ControleMotoController::class, 'infomoto'])->name('infomoto');
 Route::get('/localisermoto', [LocaliserController::class, 'localiserMoto'])->name('gps');
+Route::get('/plaintes', [PlainteController::class, 'plaintes'])->name('plaintes');
 Route::get('/listeplainte', [HomeController::class, 'listeplainte'])->name('listeplainte');
 Route::get('/profiles',  [AjoutcommController::class, 'edit'])->name('profiles');
 Route::put('/profile/updates',  [AjoutcommController::class, 'update'])->name('profileupdates');
@@ -69,4 +71,6 @@ Route::put("/palinte/{id}/update" , [PlainteController::class , "update"])->name
 Route::post('/plainte/{id}/update', 'PlainteController@update')->name('plainte.update');
 Route::get('/profile',  [AjoutagentController::class, 'edit'])->name('profile');
 Route::put('/profile/update',  [AjoutagentController::class, 'update'])->name('profileupdate');
+Route::post('/submit-audio', 'ComplaintController@storeAudio')->name('submit.audio');
+
 

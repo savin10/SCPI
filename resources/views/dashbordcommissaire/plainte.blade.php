@@ -4,8 +4,8 @@
 @section('content')
   <div class="wrapper">
    
-    @include('dashbordagent.sidebar.sidebar')
-    @include('dashbordagent.header.header')
+  @include('dashbordcommissaire.sidebar.sidebar')
+  @include('dashbordcommissaire.header.header')
     <!-- Contenu spécifique à votre page ici -->
     <div id="content-page" class="content-page">
            

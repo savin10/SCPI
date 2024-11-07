@@ -33,4 +33,6 @@ class ControleMotoController extends Controller
     {
         return view('dashbordadmin.controlermoto');
     }*/
+
+    
 }

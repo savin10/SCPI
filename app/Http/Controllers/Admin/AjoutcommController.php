@@ -42,6 +42,28 @@ class AjoutcommController extends Controller
             'role' => ['sometimes', 'integer'],
             'password' => ['required', 'string', 'max:255'],
         ]);
+       
+        if(DB::table('users')->where('email',$request->email)->exists())
+        {
+        
+            return redirect()->back()->withErrors(['email'=>'Cet email a deja été utilisé.']);
+        }
+      
+        $pass = $request->password;
+        $user = User::create([
+            'username' => strtoupper($request->username),
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'role' => $request->role,
+            'password' =>Hash::make($request['password'])
+        ]);
+
+        Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
+     
+       $user->save();
+      
+
+    return redirect()->route('ajoutercommissaire')->with('success','Commissaire enrégistrer avec success');
     
         // Vérifier si l'email existe déjà
         if (DB::table('users')->where('email', $request->email)->exists()) {
@@ -70,6 +92,11 @@ class AjoutcommController extends Controller
     public function user()
     {
         $all_user = User::where ('role', '=', '1')->get();
+        return view('dashbordadmin.listecommissaire',compact('all_user'));
+    }
+    public function agent()
+    {
+        $all_user = User::where ('role', '=', '2')->get();
         return view('dashbordadmin.listecommissaire',compact('all_user'));
     }
 

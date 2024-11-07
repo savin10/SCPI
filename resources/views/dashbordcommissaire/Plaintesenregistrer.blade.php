@@ -23,9 +23,7 @@
                     <table class="table table-bordered">
                       <thead>
                         <tr class="table-primary">
-                          <th>
-                            #
-                          </th>
+                          
                           <th>
                            Nom du déposeur
                           </th>
@@ -42,16 +40,17 @@
                            Description
                           </th>
                           <th>
-                           Action
+                            Date d'enregistrement
+                          </th>
+                          <th>
+                           Status
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach($all_plainte as $plainte)
                         <tr class="table-danger">
-                        <td>
-                           {{ $plainte->id}}
-                          </td>
+                        
                           <td>
                            {{ $plainte->nomdeposeur}}
                           </td>
@@ -66,6 +65,9 @@
                           </td>
                           <td>
                            {{ $plainte->description}}
+                          </td>
+                          <td>
+                           {{ $plainte->created_at}}
                           </td>
                           <td>
                            Traité

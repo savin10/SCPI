@@ -27,13 +27,13 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="#" class="logo d-flex align-items-center">
-        <h1 class="d-flex align-items-center">Portail de la police républicaine</h1>
+        <h1 class="d-flex align-items-center"></h1>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#" class="active">Accueil</a></li>
-          <!-- <li><a href="{{ route('register') }}"><div class="btn btn-outline-danger">Inscription</div></a></li>-->
+          <!--<li><a href="{{ route('register') }}"><div class="btn btn-outline-danger">Inscription</div></a></li>-->
         </ul>
       </nav><!-- .navbar -->
 

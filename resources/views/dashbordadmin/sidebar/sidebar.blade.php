@@ -25,6 +25,7 @@
                         <ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" >
                         <li><a href="{{ route('ajoutercommissaire') }}"><i class="las la-plus-circle"></i>Ajouter Commissaire</a></li>
                            <li><a href="{{ route('listecommissaire') }}"><i class="las la-plus-circle"></i>Listes des commissaires</a></li>
+                           <!-- <li><a href="{{ route('listagents') }}"><i class="las la-plus-circle"></i>Listes de tous les agents</a></li>-->
                         </ul>
                      </li>
                     

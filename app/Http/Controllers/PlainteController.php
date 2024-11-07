@@ -24,6 +24,11 @@ class PlainteController extends Controller
         return view('dashbordagent.plainte');
     }
 
+    public function plaintes()
+    {
+        return view('dashbordcommissaire.plainte');
+    }
+
     /**
      * Show the form for creating a new resource.
      */
