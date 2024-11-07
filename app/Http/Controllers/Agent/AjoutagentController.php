@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Agent;
-
+use Illuminate\Support\Str;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -36,33 +36,39 @@ class AjoutagentController extends Controller
     public function store(Request $request)
     {
         $registered_user_id = Auth::id();
+    
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'phone' => ['required'],
-            'email' => ['required', 'string', 'email', 'max:255',],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'role' => ['sometimes', 'integer'],
-            'password' => ['required', 'string', 'max:255'],
         ]);
+    
         if (DB::table('users')->where('email', $request->email)->exists()) {
-            return redirect()->back()->withErrors(['email' => 'Cet email a deja été utilisé.']);
+            return redirect()->back()->withErrors(['email' => 'Cet email a déjà été utilisé.']);
         }
-        $pass = $request->password;
-        $user = User::create([
-            'username' => strtoupper($request->username),
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => Hash::make($request['password']),
-            'registered_by' => $registered_user_id,
-        ]);
-        Mail::to($user->email)->send(new EnvoyerMail($user, $pass));
-        //event(new save($personne));
-        $user->save();
-        //Auth::login($personne);
-
-
-        return redirect()->route('enregistreragent')->with('success', 'Agent enrégistrer avec success');
+    
+        $generatedPassword = Str::random(5) . rand(100, 999);
+    
+        try {
+            $user = User::create([
+                'username' => strtoupper($request->username),
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'role' => $request->role ?? 0,
+                'password' => Hash::make($generatedPassword),
+                'registered_by' => $registered_user_id,
+            ]);
+    
+            Mail::to($user->email)->send(new EnvoyerMail($user, $generatedPassword));
+    
+            return redirect()->route('enregistreragent')->with('success', 'Agent enregistré avec succès');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
+        }
     }
+
+    
     public function user()
 
     {

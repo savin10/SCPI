@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -40,67 +40,47 @@ class AjoutcommController extends Controller
             'phone' => ['required'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'role' => ['sometimes', 'integer'],
-            'password' => ['required', 'string', 'max:255'],
         ]);
-       
-        if(DB::table('users')->where('email',$request->email)->exists())
-        {
-        
-            return redirect()->back()->withErrors(['email'=>'Cet email a deja été utilisé.']);
-        }
-      
-        $pass = $request->password;
-        $user = User::create([
-            'username' => strtoupper($request->username),
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' =>Hash::make($request['password'])
-        ]);
-
-        Mail::to($user->email)->send(new EnvoyerMail($user,$pass));
-     
-       $user->save();
-      
-
-    return redirect()->route('ajoutercommissaire')->with('success','Commissaire enrégistrer avec success');
     
-        // Vérifier si l'email existe déjà
+        // Check if the email already exists
         if (DB::table('users')->where('email', $request->email)->exists()) {
-            return redirect()->back()->withErrors(['email' => 'Cet email a déjà été utilisé.'])->with('error', 'Erreur lors de l\'enregistrement.');
+            return redirect()->back()->withErrors(['email' => 'Cet email a déjà été utilisé.']);
         }
+    
+        // Generate an 8-character alphanumeric password
+        $generatedPassword = Str::random(5) . rand(100, 999);
     
         try {
-            // Créer l'utilisateur
+            // Create the user with the generated password
             $user = User::create([
                 'username' => strtoupper($request->username),
                 'phone' => $request->phone,
                 'email' => $request->email,
-                'role' => $request->role ?? 0, // Valeur par défaut si `role` est absent
-                'password' => Hash::make($request->password),
+                'role' => $request->role ?? 0,
+                'password' => Hash::make($generatedPassword),
             ]);
     
-            Mail::to($user->email)->send(new EnvoyerMail($user, $request->password));
+            // Send the email with the generated password
+            Mail::to($user->email)->send(new EnvoyerMail($user, $generatedPassword));
     
-            return redirect()->route('profiles')->with('success', 'Utilisateur enregistré avec succès.');
+            return redirect()->route('ajoutercommissaire')->with('success', 'Commissaire enregistré avec succès');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de l\'enregistrement.');
         }
     }
-    
-    
+
     public function user()
     {
-        $all_user = User::where ('role', '=', '1')->get();
-        return view('dashbordadmin.listecommissaire',compact('all_user'));
+        $all_user = User::where('role', '=', '1')->get();
+        return view('dashbordadmin.listecommissaire', compact('all_user'));
     }
     public function agent()
     {
-        $all_user = User::where ('role', '=', '2')->get();
-        return view('dashbordadmin.listecommissaire',compact('all_user'));
+        $all_user = User::where('role', '=', '2')->get();
+        return view('dashbordadmin.listecommissaire', compact('all_user'));
     }
 
-    
+
 
     /**
      * Display the specified resource.
@@ -130,12 +110,12 @@ class AjoutcommController extends Controller
         $user->email = $request->input('email');
         $user->role = $request->input('role');
         $user->password = $request->input('password');
-        
-    // Ajoutez d'autres champs à mettre à jour selon vos besoins
+
+        // Ajoutez d'autres champs à mettre à jour selon vos besoins
 
         $user->save();
 
-    return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
+        return redirect()->route('profile')->with('success', 'Profil mis à jour avec succès !');
     }
 
 
@@ -144,7 +124,7 @@ class AjoutcommController extends Controller
      */
     public function destroy(string $id)
     {
-        DB::delete('delete from users where id=?',[$id]);
-        return redirect()->route('listecommissaire')->with('success-suppression','Commissaire  supprimé');
+        DB::delete('delete from users where id=?', [$id]);
+        return redirect()->route('listecommissaire')->with('success-suppression', 'Commissaire  supprimé');
     }
 }
