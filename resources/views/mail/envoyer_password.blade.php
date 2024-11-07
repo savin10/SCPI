@@ -68,7 +68,7 @@
             - <strong>Nom d'utilisateur :</strong> {{ $user->username }}<br>
             - <strong>Mot de passe :</strong> {{ $plainPassword }}
             <br><br>
-            <a href="{{ route('login') }}" class="button">Se connecter</a>
+            <a href="{{ route('login') }}" class="button"> Clique pour vous connecter</a>
         </div>
         <div class="footer">
             Si vous rencontrez des problèmes de connexion, n'hésitez pas à nous contacter.
