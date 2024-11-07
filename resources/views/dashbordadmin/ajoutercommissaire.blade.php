@@ -49,16 +49,6 @@
                                     <!-- <label for="validationDefault05">Role</label> -->
                                     <input id="role" type="hidden" value="1" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="new-role">
                                  </div>
-                                 <!--<div class="col-md-6 mb-3">
-                                 <label for="validationDefault04">Commissariat</label>
-                                    <select class="form-control" id="commissariat" name="commissariat" required>
-                                       <option selected disabled value="">Choose...</option>
-                                       <option>Godomey</option>
-                                       <option>Abomey-calavi</option>
-                                       <option>Cotonou</option>
-                                    </select>
-                                    
-                                 </div>-->
                                  <!-- <div class="col-md-12 mb-3">
                                     <label for="validationDefault05">Mot de passe</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
