@@ -41,7 +41,7 @@
                                     <label for="validationDefault03">Numéro de téléphone</label>
                                     <input id="phone" type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="email">
                                  </div>
-                                 <div class="col-md-6 mb-3">
+                                 <div class="col-md-12 mb-3">
                                     <label for="validationDefault04">Email</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                  </div>
