@@ -33,7 +33,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="#" class="active">Accueil</a></li>
-          <!--<li><a href="{{ route('register') }}"><div class="btn btn-outline-danger">Inscription</div></a></li>-->
+          <li><a href="{{ route('declarerperte') }}"><div class="btn btn-outline-danger">Déclaration de perte</div></a></li>
         </ul>
       </nav><!-- .navbar -->
 

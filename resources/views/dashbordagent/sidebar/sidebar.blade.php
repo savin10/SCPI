@@ -22,8 +22,8 @@
                         <a href="#forms" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="lab la-wpforms iq-arrow-left"></i><span>Moto</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="forms" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="{{ route('informationmoto') }}" ><i class="las la-book"></i>Information moto</a></li>
-                           <li><a href="{{ route('plainte') }}" ><i class="las la-book"></i>Enregistrer une perte</a></li>
-                           <li><a href="{{ route('listplainte') }}" ><i class="las la-book"></i>Liste des plaintes</a></li>
+                           <!--<li><a href="{{ route('plainte') }}" ><i class="las la-book"></i>Enregistrer une perte</a></li>---->
+                           <!--<li><a href="{{ route('listplainte') }}" ><i class="las la-book"></i>Liste des plaintes</a></li>---->
                         </ul>
                      </li>
                      

@@ -28,6 +28,10 @@ class PlainteController extends Controller
     {
         return view('dashbordcommissaire.plainte');
     }
+    public function declarerperte()
+    {
+        return view('perte');
+    }
 
     /**
      * Show the form for creating a new resource.
