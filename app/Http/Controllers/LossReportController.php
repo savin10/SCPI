@@ -76,7 +76,9 @@ class LossReportController extends Controller
         // Envoyer l'email avec le code de suivi
         Mail::to($request->email)->send(new LossReportNotification($lossReport));
         $this->makeCall($lossReport->telephone, $message);
-        return view('perte')->with('success', 'Déclaration enregistrée avec succès. Votre code de suivi est : ' . $lossReport->code_de_suivi);
+        return view('status')
+            ->with('success', 'Déclaration enregistrée avec succès. Votre code de suivi est : ' . $lossReport->code_de_suivi)
+            ->with('lossReport', $lossReport);
     }
 
 
@@ -111,7 +113,6 @@ class LossReportController extends Controller
                 ]
             );
 
-            // Logs pour confirmer l'envoi
             $responseBody = $response->getBody()->getContents();
             if ($responseBody) {
                 Log::info('SMS envoyé avec succès : ' . $responseBody);
@@ -141,7 +142,7 @@ class LossReportController extends Controller
                 'voice/1/calls',
                 [
                     RequestOptions::JSON => [
-                        'from' => '+22912345678', 
+                        'from' => '+22912345678',
                         'to' => '+229' . $numero,
                         'text' => $message,
                         'language' => 'fr',
@@ -167,16 +168,18 @@ class LossReportController extends Controller
 
     public function track(Request $request)
     {
+     
         $request->validate([
             'code_de_suivi' => 'required|string',
         ]);
-
+    
         $lossReport = LossReport::where('code_de_suivi', $request->code_de_suivi)->first();
-
+    
         if (!$lossReport) {
             return back()->withErrors(['code_de_suivi' => 'Déclaration non trouvée']);
         }
-
-        return view('status', compact('lossReport'));
+    
+        return back()->with('success', 'Déclaration trouvée avec succès !')->with('lossReport', $lossReport);
     }
+    
 }

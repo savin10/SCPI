@@ -10,7 +10,7 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f7f7f7;
             color: #333;
         }
 
@@ -18,44 +18,47 @@
             max-width: 600px;
             margin: 30px auto;
             background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         h1 {
-            color: #4CAF50;
+            color: #343a40;
             text-align: center;
+            font-size: 24px;
         }
 
         p {
             font-size: 16px;
             line-height: 1.6;
             margin-bottom: 20px;
+            color: #555;
         }
 
         .tracking-code {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #ffffff;
-            background-color: #007BFF;
-            padding: 10px 20px;
-            border-radius: 5px;
+            background-color: #6c757d;
+            padding: 12px 25px;
+            border-radius: 8px;
             display: inline-block;
             margin-top: 15px;
+            text-align: center;
         }
 
         .footer {
             text-align: center;
             margin-top: 30px;
-            font-size: 14px;
-            color: #777;
+            font-size: 12px;
+            color: #888;
         }
 
         .button {
             background-color: #007BFF;
             color: #ffffff;
-            padding: 12px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
@@ -74,11 +77,12 @@
             }
 
             h1 {
-                font-size: 24px;
+                font-size: 20px;
             }
 
             .tracking-code {
-                font-size: 20px;
+                font-size: 16px;
+                padding: 10px 20px;
             }
         }
     </style>
@@ -86,23 +90,21 @@
 
 <body>
     <div class="container">
-        <h1>Déclaration de Perte - Code de Suivi</h1>
+        <h1>Déclaration de Perte</h1>
         <p>Bonjour {{ $name }},</p>
-        <p>Merci de nous avoir informés de la perte de votre véhicule. Nous avons bien enregistré votre déclaration et votre
-            code de suivi est désormais prêt. Utilisez-le pour suivre l'évolution de votre demande.</p>
-        <p>Voici votre <strong>code de suivi</strong> :</p>
+        <p>
+            Merci de nous avoir informés de la perte de votre bien. Nous avons bien enregistré votre déclaration.
+            Utilisez le code ci-dessous pour suivre l'évolution de votre demande :
+        </p>
+        <p>Votre <strong>code de suivi</strong> :</p>
         <div class="tracking-code">
             {{ $trackingCode }}
         </div>
-
-        <p>Vous pouvez utiliser ce code pour vérifier l'état de votre déclaration et suivre l'avancement de votre dossier.</p>
-        
-        <p>Si vous avez des questions ou besoin d'assistance supplémentaire, n'hésitez pas à nous contacter.</p>
-
-
-        <div class="footer">
-        <p>Ce message à été générer automatiquement. Nous vous remercions de ne pas répondre</p>
-        </div>
+    </div>
+    <div class="footer">
+        <p>
+            Ce message a été généré automatiquement. Merci de ne pas répondre.
+        </p>
     </div>
 </body>
 

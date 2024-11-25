@@ -1,128 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
 
-@extends('layouts.squelette')
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Suivre une Déclaration</title>
+   <style>
+      body {
+         font-family: 'Arial', sans-serif;
+         background-color: #f8f9fa;
+         margin: 0;
+         padding: 0;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+      }
 
-@section('content')
-  <div class="wrapper">
-   
- 
-  
-    <!-- Contenu spécifique à votre page ici -->
-    <div id="content-page" class="content-page">
-           
-               <div class="row">
-               
-                  <div class="col-sm-12">
-                     <div class="iq-card">
-                        <div class="iq-card-header d-flex justify-content-between">
-                           <div class="iq-header-title">Suivre une déclaration</h4>
-                           </div>
-                        </div>
-                        <div class="iq-card-body">
-                          
-                           <form method="POST" action="{{ route('loss-report.track') }}">
-                                 @csrf
-                              <div class="form-row">
-                                 
-                                 <div class="col-md-12 mb-3">
-                                    <label for="validationDefaultUsername">Code de suivi</label>
-                                    <div class="input-group">
-                                       <div class="input-group-prepend">
-                                          <span class="input-group-text" id="inputGroupPrepend2">N°</span>
-                                       </div>
-                                       <input type="text" class="form-control" name='code_de_suivi' id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
-                                    </div>
-                                 <!--</div>
-                                   <div class="col-md-6 mb-3">
-                                    <label for="validationDefault03">Téléphone</label>
-                                    <input id="validationDefaultUsername" type="integer" class="form-control @error('telephone') is-invalid @enderror" name="telephone" value="{{ old('telephone') }}" required autocomplete="telephone">
-                                 </div>
-                                  <div class="col-md-6 mb-3">
-                                    <label for="validationDefault04">Adresse/Lieu</label>
-                                    <input  type="text" class="form-control @error('lieu') is-invalid @enderror" name="lieu" value="{{ old('lieu') }}" required autocomplete="=lieu">
-                                 </div>
-                                 <div class="col-md-12 mb-3">
-                                    <label for="validationDefault05">Nom du déclareur</label>
-                                    <input id="validationDefaultPlaque" type="text" value="{{ old('nom_victime') }}" class="form-control @error('nom_victime') is-invalid @enderror" name="nom_victime" required autocomplete="nom_victime">
-                                 </div>
-                                 <div class="col-md-12 mb-3">
-                                    <label for="validationDefault05">Description</label>
-                                    <textarea id="validationDefaultDescription"  class="form-control @error('description') is-invalid @enderror" name="description" required autocomplete="description"></textarea>-->
-                                    <!--   <button id="startRecord">Commencer l'enregistrement</button>
-    <button id="stopRecord" disabled>Arrêter l'enregistrement</button>
-    <p id="status">Statut : En attente</p>
+      .wrapper {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         width: 100%;
+      }
 
-    <audio id="audioPlayback" controls></audio>
+      .card {
+         background: #ffffff;
+         border-radius: 12px;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         padding: 30px;
+         width: 100%;
+         max-width: 500px;
+         position: relative;
+      }
 
-    <form action="{{ route('submit.audio') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="audioFile" id="audioFileInput">
-        <button type="submit" class="btn btn-primary ">Soumettre l'audio</button>
-    </form>
-    -->
-                                 </div>
-                              </div>
-                             
-                              <div class="form-group">
-                                 <button class="btn btn-primary" type="submit">Enregistrer</button>
-                              </div>
-                           </form>
-                        </div>
-                     </div>
-                     
-                  </div>
-                 
-               </div>
+      .card-header {
+         font-size: 1.5rem;
+         font-weight: bold;
+         text-align: center;
+         margin-bottom: 20px;
+         color: #333;
+      }
+
+      .card-body {
+         padding: 0 10px;
+      }
+
+      label {
+         font-size: 1rem;
+         color: #555;
+         margin-bottom: 5px;
+         display: block;
+      }
+
+      .input-group {
+         display: flex;
+         align-items: center;
+         margin-bottom: 15px;
+         border: 1px solid #ced4da;
+         border-radius: 5px;
+         overflow: hidden;
+      }
+
+      .input-group-prepend {
+         background-color: #e9ecef;
+         padding: 10px 15px;
+         font-size: 1rem;
+         color: #6c757d;
+      }
+
+      .form-control {
+         border: none;
+         padding: 10px;
+         font-size: 1rem;
+         flex: 1;
+      }
+
+      .form-control:focus {
+         outline: none;
+         box-shadow: none;
+      }
+
+      .btn-primary {
+         background-color: #007bff;
+         border: none;
+         padding: 10px 15px;
+         font-size: 1rem;
+         color: #fff;
+         border-radius: 5px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+         width: 100%;
+         max-width: 150px;
+         display: block;
+         margin: 20px auto 0;
+         text-align: center;
+      }
+
+      .btn-primary:hover {
+         background-color: #0056b3;
+      }
+
+      .loader {
+         border: 4px solid #f3f3f3;
+         border-top: 4px solid #007bff;
+         border-radius: 50%;
+         width: 50px;
+         height: 50px;
+         animation: spin 2s linear infinite;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         display: none;
+      }
+
+      @keyframes spin {
+         0% {
+            transform: rotate(0deg);
+         }
+
+         100% {
+            transform: rotate(360deg);
+         }
+      }
+
+      .loading {
+         pointer-events: none;
+      }
+      .alert-danger{
+         color: red;
+      }
+      .alert-success
+      {
+         color: green;
+      }
+      li{
+         text-decoration: none;
+      }
+
+   </style>
+</head>
+
+<body>
+   <div class="wrapper">
+      <div class="card">
+         <div class="card-header">Suivre une Déclaration</div>
+         <div class="card-body">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+               <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+               </ul>
             </div>
+            @endif
+
+            @if (session('success'))
+            <div class="alert alert-success">
+               {{ session('success') }}
+            </div>
+            @endif
+            <form id="trackForm" method="POST" action="{{ route('loss-report.track') }}" onsubmit="showLoader()">
+               @csrf
+               <div class="form-group">
+                  <label for="code_de_suivi">Code de suivi</label>
+                  <div class="input-group">
+                     <div class="input-group-prepend">N°</div>
+                     <input type="text" id="code_de_suivi" name="code_de_suivi" class="form-control" required />
+                  </div>
+               </div>
+               <button class="btn-primary" type="submit">Suivre</button>
+            </form>
+            
          </div>
-  </div>
-  <script>
-    let mediaRecorder;
-    let audioChunks = [];
+      </div>
+      <div id="loader" class="loader"></div>
+   </div>
 
-    const startRecordButton = document.getElementById('startRecord');
-    const stopRecordButton = document.getElementById('stopRecord');
-    const audioPlayback = document.getElementById('audioPlayback');
-    const status = document.getElementById('status');
-    const audioFileInput = document.getElementById('audioFileInput');
+   <script>
+      function showLoader() {
+         document.getElementById("loader").style.display = "block";
 
-    startRecordButton.addEventListener('click', async () => {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
+         document.getElementById("trackForm").classList.add("loading");
+      }
+   </script>
+</body>
 
-        mediaRecorder.start();
-        status.innerText = 'Statut : Enregistrement en cours...';
-        startRecordButton.disabled = true;
-        stopRecordButton.disabled = false;
-
-        mediaRecorder.ondataavailable = event => {
-            audioChunks.push(event.data);
-        };
-
-        mediaRecorder.onstop = () => {
-            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
-            audioChunks = [];
-            const audioURL = URL.createObjectURL(audioBlob);
-            audioPlayback.src = audioURL;
-            audioPlayback.play();
-
-            const reader = new FileReader();
-            reader.readAsDataURL(audioBlob);
-            reader.onloadend = function() {
-                audioFileInput.value = reader.result;  // Encode the audio as base64 and set it as input value
-            };
-
-            status.innerText = 'Statut : Enregistrement terminé';
-            startRecordButton.disabled = false;
-            stopRecordButton.disabled = true;
-        };
-    });
-
-    stopRecordButton.addEventListener('click', () => {
-        mediaRecorder.stop();
-    });
-</script>
-  @endsection
-
-  <!-- Contenu spécifique à votre page ici -->
-<!--   
-  @include('dashbordadmin.footer.footer') -->
+</html>
