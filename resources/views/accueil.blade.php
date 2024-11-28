@@ -34,6 +34,7 @@
         <ul>
           <li><a href="#" class="active">Accueil</a></li>
           <li><a href="{{ route('declarerperte') }}"><div class="btn btn-outline-danger">Déclaration de perte</div></a></li>
+          <li><a href="{{ route('loss-report.trackForm') }}"><div class="btn btn-outline-warning">Suivre sa déclaration</div></a></li>
         </ul>
       </nav><!-- .navbar -->
 

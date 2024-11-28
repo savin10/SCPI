@@ -179,7 +179,30 @@ class LossReportController extends Controller
             return back()->withErrors(['code_de_suivi' => 'Déclaration non trouvée']);
         }
     
-        return back()->with('success', 'Déclaration trouvée avec succès !')->with('lossReport', $lossReport);
+        //return back()->with('success', 'Déclaration trouvée avec succès !')->with('lossReport', $lossReport);
+        return view('status', compact('lossReport'));
     }
+
+    public function updateStatus(Request $request, $id)
+{
+    $request->validate([
+        'status' => 'required|in:en_attente,en_cours_de_révision,résolu',
+    ], [
+        'status.required' => 'Le statut est requis.',
+        'status.in' => 'Le statut sélectionné est invalide.',
+    ]);
+
+    // Recherche de la déclaration
+    $lossReport = LossReport::findOrFail($id);
+
+    // Mise à jour du statut
+    $lossReport->status = $request->input('status');
+    $lossReport->save();
+
+    // Redirection avec message de succès
+    return redirect()->back()->with('success', 'Statut mis à jour avec succès.');
+}
+
+
     
 }

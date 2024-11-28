@@ -15,27 +15,23 @@
   <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Plaintes enregistrer</h4>
+                  <h4 class="card-title">Déclarations de perte enregistrées</h4>
                   <p class="card-description">
                     
                   </p>
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
-                        <tr class="table-danger">
+                        <tr class="table">
                           
                           <th>
-                           Nom du déposeur
+                          Nom du déclareur
                           </th>
                           <th>
-                           Adresse/Lieu
+                           Téléphone
                           </th>
-                          <th>
-                           Tel
-                          </th>
-                          <th>
-                           Objet
-                          </th>
+                          
+                          
                           <th>
                            Description
                           </th>
@@ -45,33 +41,43 @@
                           <th>
                            Status
                           </th>
+                          
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($all_plainte as $plainte)
-                        <tr class="table">
+                        @foreach($all_declaration as $declaration)
+                        <tr class="table-primary">
                         
                           <td>
-                           {{ $plainte->nomdeposeur}}
+                           {{ $declaration->nom_victime}}
                           </td>
                           <td>
-                           {{ $plainte->lieu}}
+                           {{ $declaration->telephone}}
+                          </td>
+                          
+                          <td>
+                           {{ $declaration->description}}
                           </td>
                           <td>
-                           {{ $plainte->tel}}
+                           {{ $declaration->created_at}}
                           </td>
                           <td>
-                           {{ $plainte->objet}}
+                           
+                          <form action="{{ route('loss-report.updateStatus', $declaration->id) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <div class="d-flex align-items-center">
+        <select name="status" class="form-select form-select-sm me-2">
+            <option value="en_attente" {{ $declaration->status == 'en_attente' ? 'selected' : '' }}>En attente</option>
+            <option value="en_cours_de_révision" {{ $declaration->status == 'en_cours_de_révision' ? 'selected' : '' }}>En cours</option>
+            <option value="résolu" {{ $declaration->status == 'résolu' ? 'selected' : '' }}>Résolu</option>
+        </select>
+        <button type="submit" class="btn btn-sm btn-primary">Modifier</button>
+    </div>
+</form>
+
                           </td>
-                          <td>
-                           {{ $plainte->description}}
-                          </td>
-                          <td>
-                           {{ $plainte->created_at}}
-                          </td>
-                          <td>
-                           Traité
-                          </td>
+                         
                           
                         </tr>
                         @endforeach

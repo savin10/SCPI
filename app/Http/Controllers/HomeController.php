@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
 use App\Models\Plainte;
+use App\Models\LossReport;
 
 class HomeController extends Controller
 {
@@ -93,6 +94,11 @@ class HomeController extends Controller
     {
         $all_plainte = Plainte::all();
         return view('dashbordcommissaire.Plaintesenregistrer',compact('all_plainte'));
+    }
+    public function declaration()
+    {
+        $all_declaration = LossReport::all();
+        return view('dashbordcommissaire.declaration',compact('all_declaration'));
     }
     public function listplainte()
     {

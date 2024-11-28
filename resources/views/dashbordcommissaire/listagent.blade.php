@@ -22,7 +22,7 @@
                   <div class="table-responsive pt-3">
                     <table class="table table-bordered">
                       <thead>
-                        <tr class="table-primary">
+                        <tr class="table">
                          
                           <th>
                            Nom des agents

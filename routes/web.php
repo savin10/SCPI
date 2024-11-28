@@ -73,6 +73,8 @@ Route::post('/plainte/{id}/update', 'PlainteController@update')->name('plainte.u
 Route::get('/profile',  [AjoutagentController::class, 'edit'])->name('profile');
 Route::put('/profile/update',  [AjoutagentController::class, 'update'])->name('profileupdate');
 Route::post('/submit-audio', 'ComplaintController@storeAudio')->name('submit.audio');
+
+Route::get('/declaration', [HomeController::class, 'declaration'])->name('declaration');
 //Route::get('/declarerperte', [PlainteController::class, 'declarerperte'])->name('declarerperte');
 
 //déclarer une perte
@@ -81,3 +83,6 @@ Route::get('/declarerperte', [LossReportController::class, 'create'])->name('dec
 Route::post('/loss-report', [LossReportController::class, 'store'])->name('loss-report.store');
 Route::get('/loss-report/track', [LossReportController::class, 'showTrackForm'])->name('loss-report.trackForm');
 Route::post('/loss-report/track', [LossReportController::class, 'track'])->name('loss-report.track');
+//Route::put('/loss-report/{id}/status', [LossReportController::class, 'updateStatus'])->name('loss-report.updateStatus');
+Route::put('/loss-report/{id}/update-status', [LossReportController::class, 'updateStatus'])->name('loss-report.updateStatus');
+
